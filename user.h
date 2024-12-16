@@ -25,6 +25,12 @@ int sleep(int);
 int uptime(void);
 int getmysize(void);
 int getyear(void);
+int getkernelstartaddr(void);
+int getkernelendaddr(void);
+int getkernelvariaddr(void);
+int getsystemcalladdr(void);
+int setpriority(int);
+int getinodesize(char*);
 
 // ulib.c
 int stat(const char*, struct stat*);

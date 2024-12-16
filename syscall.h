@@ -22,3 +22,9 @@
 #define SYS_close      21
 #define SYS_getyear    22
 #define SYS_getmysize  23
+#define SYS_getkernelstartaddr  24
+#define SYS_getkernelendaddr  25
+#define SYS_getkernelvariaddr  26
+#define SYS_getsystemcalladdr  27
+#define SYS_setpriority  28
+#define SYS_getinodesize  29

@@ -7,6 +7,7 @@
 #include "mmu.h"
 #include "proc.h"
 
+
 int 
 sys_getyear(void) {
   return 2001;
@@ -26,7 +27,6 @@ sys_getmysize(void)
   return addr;
 }
 
-
 int
 sys_fork(void)
 {
@@ -45,6 +45,41 @@ sys_wait(void)
 {
   return wait();
 }
+
+int
+sys_getkernelstartaddr(void)
+{
+    return (int)KERNBASE; // Return the starting virtual address of the kernel
+}
+
+int
+sys_getkernelendaddr(void)
+{
+    return (int)KERNBASE + ((int)PHYSTOP - 0x00000000); // Return the ending virtual address of the kernel
+}
+
+int
+sys_getkernelvariaddr(void)
+{
+    int a = 0;
+
+    return (int)&a; // Return the address of the kernel variable
+}
+
+int
+sys_getsystemcalladdr(void)
+{
+    return (int)sys_fork; // Return the address of the sys_fork system call
+}
+
+int 
+sys_setpriority(void) {
+    int n;
+    argint(0, &n);
+    myproc() -> priority = n;
+    return n;
+}
+
 
 int
 sys_kill(void)

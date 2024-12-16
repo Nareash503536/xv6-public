@@ -183,6 +183,9 @@ UPROGS=\
 	_zombie\
 	_myprogram\
 	_hack-day-2\
+	_hack-day-3\
+	_hack-day-4\
+	_hack-day-5
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -253,7 +256,7 @@ EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
 	printf.c umalloc.c\
-	myprogram.c hack-day-2.c\
+	myprogram.c hack-day-2.c hack-day-3.c hack-day-4.c hack-day-5.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
 

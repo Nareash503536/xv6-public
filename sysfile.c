@@ -283,6 +283,21 @@ create(char *path, short type, short major, short minor)
 }
 
 int
+sys_getinodesize(void)
+{
+  char* path;
+  argstr(0, &path);
+  struct inode *ip;
+
+  ip = namei(path);
+
+  if( ip == 0)
+    return -1;
+
+  return ip -> size;
+}
+
+int
 sys_open(void)
 {
   char *path;
