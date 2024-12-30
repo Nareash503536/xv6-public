@@ -19,6 +19,11 @@ main(void)
   dup(0);  // stdout
   dup(0);  // stderr
 
+  pid = fork();
+  if(pid == 0){
+    exec("hack-day-6", argv);
+  }
+
   for(;;){
     printf(1, "init: starting sh\n");
     pid = fork();
