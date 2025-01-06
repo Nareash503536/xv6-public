@@ -80,6 +80,40 @@ sys_setpriority(void) {
     return n;
 }
 
+int 
+sys_mycall(void) {
+  int size;
+    char *buf;
+    char *s;
+
+    if (argint(0, &size) <0)
+        return -1;
+
+    if (argptr(1, &buf,size) <0)
+        return -1;
+
+    s = buf;
+    struct proc* proc = getProcList();
+    while(buf + size > s){
+
+      *(int *)s = proc->pid;        
+      s += sizeof(int);             
+
+      strncpy((char *)s, proc->name, 16); 
+      s += 16;                         
+
+      *(uint *)s = proc->sz;        
+      s += sizeof(uint);  
+
+      *(int *)s = proc->priority;        
+      s += sizeof(int);            
+
+      proc++;  
+    }
+
+    return 1;
+}
+
 
 int
 sys_kill(void)
